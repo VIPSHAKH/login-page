@@ -1,0 +1,270 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        Login Page
+    </title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet" />
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to top, #2c3e50, );
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;
+        }
+
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+            color: white;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 40px 10px 10px;
+            border: 1PX solid rgba(206, 206, 206, 0.637);
+            border-radius: 20px;
+            background: rgba(252, 252, 252, 0);
+            color: rgb(255, 255, 255);
+            font-size: 1em;
+
+        }
+
+        .input-group input::placeholder {
+            color: rgb(255, 255, 255);
+            font-size: 1em;
+
+        }
+
+        .input-group i {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font: 1em sans-serif;
+        }
+
+        .options label {
+            display: flex;
+            align-items: center;
+        }
+
+        .options input {
+            margin-right: 5px;
+        }
+
+        .options a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background: white;
+            color: #535455;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .register-link {
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="//cdn.webglstats.com/stat.js" defer async></script>
+    <div class="background">
+        <img alt="A beautiful night sky with stars and mountains in the background" height="1080" src="/img.jpg"
+            width="1920" />
+    </div>
+    <div class="login-container">
+        <h1 onclick="play5()" id="falling-element-l">
+            Login
+        </h1>
+        <div class="input-group" id="falling-element-u">
+            <input placeholder="Username" type="text" onclick="play3()" />
+            <i class="fas fa-user">
+            </i>
+        </div>
+        <div class="input-group" id="falling-element-p">
+            <input placeholder="Password" type="password" onclick="play4()" />
+            <i class="fas fa-lock">
+            </i>
+        </div>
+        <div class="options" id="falling-element-o">
+            <label>
+                <input type="checkbox" onclick="play2()" />
+                Remember me &emsp;&emsp;&emsp;
+            </label>
+            <a href="#">
+                Forgot password?
+            </a>
+        </div>
+        <button class="login-btn" id="falling-element-login" onclick="play1()">
+            Login
+        </button>
+        <div class="register-link" id="falling-element-r" onclick="play()">
+            Don't have an account?
+            <a href="#">
+                Register
+            </a>
+        </div>
+    </div>
+    <script>
+        function play() {
+            const element = document.querySelector("#falling-element-r");
+            const fallSpeed = 10;
+            let distance = 0;
+            requestAnimationFrame(tick);
+            function tick() {
+                const { innerHeight } = window;
+                const { bottom } = element.getBoundingClientRect();
+                if (bottom < innerHeight - 10) {
+                    distance += fallSpeed;
+                    element.style.transform = `translateY(${distance}px)`;
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+        function play1() {
+            const element = document.querySelector("#falling-element-login");
+            const fallSpeed = 10;
+            let distance = 0;
+            requestAnimationFrame(tick);
+            function tick() {
+                const { innerHeight } = window;
+                const { bottom } = element.getBoundingClientRect();
+                if (bottom < innerHeight - 35) {
+                    distance += fallSpeed;
+                    element.style.transform = `translateY(${distance}px)`;
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+        function play2() {
+            const element = document.querySelector("#falling-element-o");
+            const fallSpeed = 10;
+            let distance = 10;
+            requestAnimationFrame(tick);
+            function tick() {
+                const { innerHeight } = window;
+                const { bottom } = element.getBoundingClientRect();
+                if (bottom < innerHeight - 80) {
+                    distance += fallSpeed;
+                    element.style.transform = `translateY(${distance}px)`;
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+        function play3() {
+            const element = document.querySelector("#falling-element-u");
+            const fallSpeed = 10;
+            let distance = 0;
+            requestAnimationFrame(tick);
+            function tick() {
+                const { innerHeight } = window;
+                const { bottom } = element.getBoundingClientRect();
+                if (bottom < innerHeight - 160) {
+                    distance += fallSpeed;
+                    element.style.transform = `translateY(${distance}px)`;
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+        function play4() {
+            const element = document.querySelector("#falling-element-p");
+            const fallSpeed = 10;
+            let distance = 0;
+            requestAnimationFrame(tick);
+            function tick() {
+                const { innerHeight } = window;
+                const { bottom } = element.getBoundingClientRect();
+                if (bottom < innerHeight - 115) {
+                    distance += fallSpeed;
+                    element.style.transform = `translateY(${distance}px)`;
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+        function play5() {
+            const element = document.querySelector("#falling-element-l");
+            const fallSpeed = 10;
+            let distance = 0;
+            requestAnimationFrame(tick);
+            function tick() {
+                const { innerHeight } = window;
+                const { bottom } = element.getBoundingClientRect();
+                if (bottom < innerHeight - 200) {
+                    distance += fallSpeed;
+                    element.style.transform = `translateY(${distance}px)`;
+                    requestAnimationFrame(tick);
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
